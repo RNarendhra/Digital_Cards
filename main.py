@@ -111,7 +111,7 @@ employees = {
 
     "can": {
         "name": "Can Ikizoglu",
-        "designation": "Sales & Operations Executive",
+        "designation": "COO",
         "company": "CargoCrew",
         "mobile": "+971585785122",
         "email": "can.ikizoglu@cargocrew.aero",
@@ -122,7 +122,7 @@ employees = {
 
     "sachin": {
         "name": "Sachin Sanesh",
-        "designation": "Business Development Manager",
+        "designation": "Sales Manager",
         "company": "CargoCrew",
         "mobile": "+971549913255",
         "email": "sachin@cargocrew.aero",
@@ -130,6 +130,7 @@ employees = {
         "address": "P.O. Box 566624, Dubai, UAE",
         "order": 7
     },
+
 
     "Askari": {
         "name": "Muhammad Askari Aliya",
