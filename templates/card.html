@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ employee.name }} | {{ employee.company }}</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet"
+          href="/static/style.css?v=2">
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="logo">
+    <img src="/static/cargocrew-logo.png" alt="CargoCrew">
+</div>
+        <div class="profile">
+
+            <h1>
+                {{ employee.name }}
+            </h1>
+
+            <h2>
+                {{ employee.designation }}
+            </h2>
+
+            <!-- <p class="company">
+                {{ employee.company }}
+            </p> -->
+
+        </div>
+
+        <div class="details">
+
+            <a href="tel:{{ employee.mobile }}">
+                📞 {{ employee.mobile }}
+            </a>
+
+            <a href="mailto:{{ employee.email }}">
+                ✉️ {{ employee.email }}
+            </a>
+
+            <a class="website-link" href="{{ employee.website }}"
+               target="_blank">
+                🌐 {{ employee.website }}
+            </a>
+
+            <p>
+                📍 {{ employee.address }}
+            </p>
+
+            
+
+        </div>
+
+        <div class="buttons">
+
+    <!-- Call -->
+    <a href="tel:{{ employee.mobile }}">
+        📞 Call
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:{{ employee.email }}">
+        ✉️ Email
+    </a>
+
+    <!-- WhatsApp -->
+<a href="https://wa.me/{{ employee.mobile | replace('+', '') | replace(' ', '') }}"
+   target="_blank"
+   rel="noopener">
+    💬 WhatsApp
+</a>
+
+    <!-- Website -->
+    <a href="{{ employee.website }}"
+       target="_blank"
+       rel="noopener">
+        🌐 Website
+    </a>
+
+</div>
+
+    </div>
+
+</body>
+
+</html>

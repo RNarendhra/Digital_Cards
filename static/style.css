@@ -1,0 +1,438 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f2f4f7;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    padding: 20px 12px;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.card {
+    width: 100%;
+    max-width: 430px;
+
+    margin: 0 auto;
+
+    padding: 30px 25px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CARGOCREW LOGO
+========================================= */
+
+.logo {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 28px;
+
+    overflow: hidden;
+}
+
+.logo img {
+    display: block;
+
+    width: 220px !important;
+    max-width: 220px !important;
+
+    height: auto;
+
+    object-fit: contain;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile {
+    width: 100%;
+}
+
+.profile h1 {
+    margin: 0;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #222222;
+}
+
+.profile h2 {
+    margin: 10px 0;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+
+    color: #444444;
+}
+
+.company {
+    margin: 0 0 30px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   CONTACT DETAILS
+========================================= */
+
+.details {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-bottom: 30px;
+
+    text-align: left;
+}
+
+.details a,
+.details p {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #222222;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+/* =========================================
+   WEBSITE LINK
+========================================= */
+
+.website-link {
+    display: block !important;
+
+    width: 100% !important;
+
+    text-align: left !important;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+/* =========================================
+   BUTTONS - 2 PER ROW
+========================================= */
+
+.buttons {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+.buttons a {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding: 12px 14px;
+
+    background: #102a43;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.buttons a:hover {
+    background: #163d5f;
+
+    transform: translateY(-2px);
+}
+
+.buttons a:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        align-items: flex-start;
+
+        padding: 20px 12px;
+    }
+
+    .card {
+        width: 100%;
+
+        max-width: 430px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        width: 100%;
+
+        min-height: 100vh;
+
+        padding: 12px;
+
+        align-items: flex-start;
+    }
+
+    .card {
+        width: 100%;
+
+        max-width: 430px;
+
+        padding: 25px 18px;
+
+        border-radius: 16px;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+        margin-bottom: 24px;
+    }
+
+    .logo img {
+        width: 200px !important;
+
+        max-width: 200px !important;
+    }
+
+
+    /* NAME */
+
+    .profile h1 {
+        font-size: 25px;
+    }
+
+
+    /* DESIGNATION */
+
+    .profile h2 {
+        font-size: 17px;
+    }
+
+
+    /* COMPANY */
+
+    .company {
+        font-size: 15px;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* CONTACT DETAILS */
+
+    .details {
+        gap: 13px;
+
+        margin-bottom: 25px;
+    }
+
+    .details a,
+    .details p {
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+    /* WEBSITE LEFT */
+
+    .website-link {
+        text-align: left !important;
+    }
+
+
+    /* BUTTONS - 2 PER ROW */
+
+    .buttons {
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+
+        width: 100%;
+    }
+
+    .buttons a {
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 48px;
+
+        padding: 12px 10px;
+
+        font-size: 14px;
+
+        text-align: left !important;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .card {
+        padding: 22px 15px;
+    }
+
+    .logo img {
+        width: 180px !important;
+
+        max-width: 180px !important;
+    }
+
+    .profile h1 {
+        font-size: 23px;
+    }
+
+    .profile h2 {
+        font-size: 16px;
+    }
+
+    .details a,
+    .details p {
+        font-size: 13px;
+    }
+
+
+    /* KEEP 2 BUTTONS PER ROW */
+
+    .buttons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+    .buttons a {
+        padding: 11px 8px;
+
+        font-size: 13px;
+    }
+    
+}

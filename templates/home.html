@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CargoCrew | Digital Cards</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet"
+          href="/static/home.css">
+
+</head>
+
+<body>
+
+    <main class="home-container">
+
+        <!-- HEADER -->
+
+        <section class="welcome">
+
+            <img
+                src="/static/cargocrew-logo.png"
+                alt="CargoCrew"
+                class="company-logo"
+            >
+
+            <h1>
+                Welcome to CargoCrew
+            </h1>
+
+            <p>
+                Digital Visiting Cards
+            </p>
+
+            <!-- <p class="intro">
+                Select a team member below to view their
+                digital visiting card.
+            </p> -->
+
+        </section>
+
+
+        <!-- EMPLOYEE DIRECTORY -->
+
+        <section class="directory">
+
+            <h2>
+                Our Team
+            </h2>
+
+            <div class="employee-grid">
+
+                {% for slug, employee in employees %}
+
+                <a
+                    href="/{{ slug }}"
+                    class="employee-card"
+                >
+
+                    <div class="employee-info">
+
+                        <h3>
+                            {{ employee.name }}
+                        </h3>
+
+                        <p class="designation">
+                            {{ employee.designation }}
+                        </p>
+
+                        <p class="company">
+                            CargoCrew
+                        </p>
+
+                    </div>
+
+                    <span class="view-card">
+                        View Visiting Card →
+                    </span>
+
+                </a>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                Thank you for visiting CargoCrew.
+            </p>
+
+            <a
+                href="https://www.cargocrew.aero"
+                target="_blank"
+                rel="noopener"
+            >
+                www.cargocrew.aero
+            </a>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

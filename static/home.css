@@ -1,0 +1,292 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f2f4f7;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.home-container {
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 40px 20px 30px;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.company-logo {
+    width: 230px;
+
+    max-width: 80%;
+
+    height: auto;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+}
+
+.welcome h1 {
+    margin: 0;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    color: #102a43;
+}
+
+.welcome > p {
+    margin: 10px 0;
+}
+
+.welcome > p:first-of-type {
+    font-size: 20px;
+
+    font-weight: 600;
+
+    color: #444444;
+}
+
+.intro {
+    max-width: 600px;
+
+    margin: 15px auto 0 !important;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #666666;
+}
+
+
+/* =========================================
+   DIRECTORY
+========================================= */
+
+.directory h2 {
+    text-align: center;
+
+    font-size: 25px;
+
+    margin-bottom: 25px;
+
+    color: #102a43;
+}
+
+
+/* =========================================
+   EMPLOYEE GRID
+========================================= */
+
+.employee-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   EMPLOYEE CARD
+========================================= */
+
+.employee-card {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    min-height: 170px;
+
+    padding: 24px;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #eeeeee;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.employee-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   EMPLOYEE INFORMATION
+========================================= */
+
+.employee-info h3 {
+    margin: 0 0 8px;
+
+    font-size: 21px;
+
+    color: #102a43;
+}
+
+.designation {
+    margin: 0;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #444444;
+
+    line-height: 1.5;
+}
+
+.company {
+    margin: 8px 0 0;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #222222;
+}
+
+
+/* =========================================
+   VIEW CARD
+========================================= */
+
+.view-card {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #102a43;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    text-align: center;
+
+    margin-top: 50px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #dddddd;
+}
+
+footer p {
+    margin: 0 0 8px;
+
+    font-size: 15px;
+
+    color: #555555;
+}
+
+footer a {
+    color: #102a43;
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .home-container {
+        padding: 25px 14px;
+    }
+
+    .company-logo {
+        width: 190px;
+    }
+
+    .welcome {
+        margin-bottom: 35px;
+    }
+
+    .welcome h1 {
+        font-size: 27px;
+    }
+
+    .welcome > p:first-of-type {
+        font-size: 18px;
+    }
+
+    .employee-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .employee-card {
+        min-height: 150px;
+
+        padding: 20px;
+    }
+
+    .employee-info h3 {
+        font-size: 20px;
+    }
+
+    .view-card {
+        margin-top: 16px;
+    }
+}
