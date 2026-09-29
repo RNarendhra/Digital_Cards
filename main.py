@@ -131,7 +131,16 @@ employees = {
         "order": 7
     },
 
-
+  "Shaima": {
+        "name": "Shaima Jaison",
+        "designation": "Senior Sales Executive",
+        "company": "CargoCrew",
+        "mobile": "+971 54 5083066",
+        "email": "shaima@cargocrew.aero",
+        "website": "www.cargocrew.aero",
+        "address": "P.O. Box 566624, Dubai, UAE",
+        "order": 8
+    },
     "Askari": {
         "name": "Muhammad Askari Aliya",
         "designation": "Sales & Operation Executive",
@@ -140,8 +149,9 @@ employees = {
         "email": "sales@stackntrack.ae",
         "website": "https://www.stackntrack.ae",
         "address": "Warehouse No. G01, Dubai Investment Park 2, Dubai, UAE",
-        "order": 8
+        "order": 9
     }
+  
 }
 
 
