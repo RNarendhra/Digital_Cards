@@ -121,7 +121,7 @@ employees = {
     },
 
     "sachin": {
-        "name": "Sachin Sanesh",
+        "name": "Sachin Sandesh",
         "designation": "Sales Manager",
         "company": "CargoCrew",
         "mobile": "+971549913255",
