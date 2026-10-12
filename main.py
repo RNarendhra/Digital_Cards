@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
@@ -131,7 +131,7 @@ employees = {
         "order": 7
     },
 
-  "Shaima": {
+    "Shaima": {
         "name": "Shaima Jaison",
         "designation": "Senior Sales Executive",
         "company": "CargoCrew",
@@ -141,6 +141,7 @@ employees = {
         "address": "P.O. Box 566624, Dubai, UAE",
         "order": 8
     },
+
     "Askari": {
         "name": "Muhammad Askari Aliya",
         "designation": "Sales & Operation Executive",
@@ -151,8 +152,62 @@ employees = {
         "address": "Warehouse No. G01, Dubai Investment Park 2, Dubai, UAE",
         "order": 9
     }
-  
+
 }
+
+
+# ============================================================
+# VCARD & HELPER FUNCTIONS
+# ============================================================
+
+def find_employee(slug: str):
+    """Find employee by slug with case-insensitive fallback."""
+    if slug in employees:
+        return slug, employees[slug]
+    slug_lower = slug.lower()
+    for key, val in employees.items():
+        if key.lower() == slug_lower:
+            return key, val
+    return None, None
+
+
+def generate_vcard(employee: dict) -> str:
+    """Generate standard RFC 6350 / 2426 vCard 3.0 string with CRLF line endings."""
+    name = employee.get("name", "").strip()
+    name_parts = name.split()
+    if len(name_parts) > 1:
+        first_name = " ".join(name_parts[:-1])
+        last_name = name_parts[-1]
+    else:
+        first_name = name
+        last_name = ""
+
+    company = employee.get("company", "CargoCrew").strip()
+    designation = employee.get("designation", "").strip()
+    mobile = employee.get("mobile", "").strip()
+    clean_mobile = mobile.replace(" ", "")
+    email = employee.get("email", "").strip()
+    website = employee.get("website", "").strip()
+    address = employee.get("address", "").strip()
+
+    escaped_address = address.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,")
+
+    vcard_lines = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        f"N:{last_name};{first_name};;;",
+        f"FN:{name}",
+        f"ORG:{company}",
+        f"TITLE:{designation}",
+        f"TEL;TYPE=CELL,VOICE:{clean_mobile}",
+        f"EMAIL;TYPE=WORK,INTERNET:{email}",
+        f"URL:{website}",
+        f"ADR;TYPE=WORK;CHARSET=UTF-8:;;{escaped_address};;;;",
+        f"LABEL;TYPE=WORK;CHARSET=UTF-8:{escaped_address}",
+        "NOTE;CHARSET=UTF-8:CargoCrew Digital Business Card",
+        "END:VCARD",
+    ]
+    return "\r\n".join(vcard_lines) + "\r\n"
 
 
 # ============================================================
@@ -178,13 +233,47 @@ async def home(request: Request):
 
 
 # ============================================================
+# VCARD DOWNLOAD (SAFE DOWNLOAD ENDPOINT)
+# ============================================================
+
+@app.get("/{slug}/vcf")
+@app.get("/{slug}/vcard")
+@app.get("/{slug}/contact.vcf")
+async def download_vcard(slug: str):
+    emp_slug, employee = find_employee(slug)
+
+    # Employee doesn't exist
+    if employee is None:
+        raise HTTPException(status_code=404, detail="Employee not found")
+
+    vcard_content = generate_vcard(employee)
+    safe_name = "".join(c for c in employee["name"] if c.isalnum() or c in (" ", "_", "-")).strip().replace(" ", "_")
+    filename = f"{safe_name}.vcf"
+
+    headers = {
+        "Content-Disposition": f'attachment; filename="{filename}"; filename*=UTF-8\'\'{filename}',
+        "Content-Type": "text/vcard; charset=utf-8",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+    }
+
+    return Response(
+        content=vcard_content.encode("utf-8"),
+        media_type="text/vcard; charset=utf-8",
+        headers=headers
+    )
+
+
+# ============================================================
 # DIGITAL BUSINESS CARD
 # ============================================================
 
 @app.get("/{slug}")
 async def digital_card(request: Request, slug: str):
 
-    employee = employees.get(slug)
+    emp_slug, employee = find_employee(slug)
 
     # Employee doesn't exist
     if employee is None:
@@ -197,6 +286,7 @@ async def digital_card(request: Request, slug: str):
         request=request,
         name="card.html",
         context={
-            "employee": employee
+            "employee": employee,
+            "slug": emp_slug
         }
     )
